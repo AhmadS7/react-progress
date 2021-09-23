@@ -8,8 +8,8 @@ function App() {
     <>
       <Navbar name="KonverTer" />
       <div className="container my-3">
-        <TextForm heading="Write Down Your Text Here:" />
-        {/* <About /> */}
+        {/* <TextForm heading="Write Down Your Text Here:" /> */}
+        <About />
       </div>
     </>
   );

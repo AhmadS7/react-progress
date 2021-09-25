@@ -5,12 +5,13 @@ import Navbar from './components/Navbar';
 import TextForm from './components/TextForm';
 
 function App() {
-  const [Mode, setMode] = useState('dark');
+  const [Mode, setMode] = useState('light');
 
   const toggleMode = () => {
     if (Mode === 'light') {
       setMode('dark');
-      document.body.style.backgroundColor = 'gray';
+      document.body.style.backgroundColor = '#042743';
+      document.body.style.color = 'white';
     } else {
       setMode('light');
       document.body.style.backgroundColor = 'white';
@@ -20,7 +21,7 @@ function App() {
     <>
       <Navbar name="KonverTer" Mode={Mode} toggleMode={toggleMode} />
       <div className="container my-3">
-        <TextForm heading="Write Down Your Text Here:" />
+        <TextForm Mode={Mode} heading="Write Down Your Text Here:" />
         {/* <About /> */}
       </div>
     </>

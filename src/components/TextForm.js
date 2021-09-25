@@ -2,7 +2,7 @@ import React from 'react';
 import { useState } from 'react/cjs/react.development';
 
 export default function TextForm(props) {
-  const [text, setText] = useState('Enter Your Text');
+  const [text, setText] = useState('');
 
   const handleUpClick = () => {
     setText(text.toUpperCase());
@@ -24,10 +24,18 @@ export default function TextForm(props) {
 
   return (
     <>
-      <div className="container">
+      <div className="container" style={{ color: props.Mode === 'dark' ? 'white' : '#042743' }}>
         <h1>{props.heading}</h1>
         <div className="mb-3">
-          <textarea className="form-control my-3" onChange={handleOnChange} value={text} id="myBox" rows="7" onFocus={(e) => setText('')} />
+          <textarea
+            style={{ backgroundColor: props.Mode === 'dark' ? 'grey' : 'white', color: props.Mode === 'dark' ? 'white' : '#042743' }}
+            className="form-control my-3"
+            onChange={handleOnChange}
+            value={text}
+            id="myBox"
+            rows="7"
+            onFocus={(e) => setText('')}
+          />
         </div>
         <button onClick={handleUpClick} className="btn btn-primary my-2 mx-2">
           Convert to Upppercase Format
@@ -38,11 +46,11 @@ export default function TextForm(props) {
         <button onClick={(e) => setText('')} className="btn btn-primary my-2 mx-2">
           Cleart Text
         </button>
-        <button onClick={intoTitleCase} className="btn btn-primary my-2 mx-2">
+        {/* <button onClick={intoTitleCase} className="btn btn-primary my-2 mx-2">
           Cpitalize Text
-        </button>
+        </button> */}
       </div>
-      <div className="container my-3 mx-2">
+      <div className="container my-3 mx-2" style={{ color: props.Mode === 'dark' ? 'white' : '#042743' }}>
         <h1 className="my-4">Text Summary</h1>
         <p>
           {' '}
@@ -51,7 +59,7 @@ export default function TextForm(props) {
 
         <p>{0.008 * text.split(' ').length} minutes read</p>
         <h1>Preview</h1>
-        <p>{text}</p>
+        <p>{text.length > 0 ? text : 'Enter Your Text to Preview'}</p>
       </div>
     </>
   );

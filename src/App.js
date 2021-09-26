@@ -4,6 +4,7 @@ import About from './components/About';
 import Alert from './components/Alert';
 import Navbar from './components/Navbar';
 import TextForm from './components/TextForm';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
 function App() {
   const [Mode, setMode] = useState('light');
@@ -40,12 +41,20 @@ function App() {
   };
   return (
     <>
-      <Navbar name="KonverTer" Mode={Mode} toggleMode={toggleMode} />
-      <Alert alert={alert} />
-      <div className="container my-3">
-        <TextForm showAlert={showAlert} Mode={Mode} heading="Write Down Your Text Here:" />
-        {/* <About /> */}
-      </div>
+      <Router>
+        <Navbar name="KonverTer" Mode={Mode} toggleMode={toggleMode} />
+        <Alert alert={alert} />
+        <div className="container my-3">
+          <Switch>
+            <Route exact path="/about">
+              <About />
+            </Route>
+            <Route exact path="/">
+              <TextForm showAlert={showAlert} Mode={Mode} heading="Write Down Your Text Here:" />
+            </Route>
+          </Switch>
+        </div>
+      </Router>
     </>
   );
 }

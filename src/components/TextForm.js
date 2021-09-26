@@ -51,7 +51,6 @@ export default function TextForm(props) {
             value={text}
             id="myBox"
             rows="7"
-            onFocus={(e) => setText('')}
           />
         </div>
         <button onClick={handleUpClick} className="btn btn-primary my-2 mx-2">

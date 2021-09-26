@@ -26,6 +26,12 @@ function App() {
       document.body.style.backgroundColor = '#042743';
       document.body.style.color = 'white';
       showAlert('Starting Dark Mode', 'success');
+      setInterval(() => {
+        document.title = 'You are on the dark mode';
+      }, 2500);
+      setInterval(() => {
+        document.title = 'You can go back to Light mode now.';
+      }, 1500);
     } else {
       setMode('light');
       document.body.style.backgroundColor = 'white';

@@ -6,20 +6,37 @@ export default function TextForm(props) {
 
   const handleUpClick = () => {
     setText(text.toUpperCase());
+    props.showAlert('Converted to UpperCase', 'success');
   };
   const handleLowClick = () => {
     setText(text.toLowerCase());
+    props.showAlert('Converted to LowerCase', 'success');
   };
 
   const handleOnChange = (e) => {
     setText(e.target.value);
   };
-  const intoTitleCase = () => {
-    let newText = text.split(' ').map((currentValue) => {
-      let newText = currentValue[0].toUpperCase() + currentValue.slice(1);
-      return newText;
-    });
-    setText(newText.join(' '));
+  // const intoTitleCase = () => {
+  //   let newText = text.split(' ').map((currentValue) => {
+  //     let newText = currentValue[0].toUpperCase() + currentValue.slice(1);
+  //     return newText;
+  //   });
+  //   setText(newText.join(' '));
+  // };
+
+  const handleCopy = () => {
+    var text = document.getElementById('myBox');
+    text.select();
+    text.setSelectionRange(0, 999);
+    navigator.clipboard.writeText(text.value);
+    props.showAlert('Text Copied Successfully', 'success');
+  };
+
+  const handleSpace = () => {
+    // eslint-disable-next-line no-empty-character-class
+    let netText = text.split(/[ ]+/);
+    setText(netText.join(' '));
+    props.showAlert('Extra Spaces Deleted', 'warning');
   };
 
   return (
@@ -42,6 +59,12 @@ export default function TextForm(props) {
         </button>
         <button onClick={handleLowClick} className="btn btn-primary my-2 mx-2">
           Convert to Lowercase Format
+        </button>
+        <button onClick={handleCopy} className="btn btn-primary my-2 mx-2">
+          Copy The Text
+        </button>
+        <button onClick={handleSpace} className="btn btn-primary my-2 mx-2">
+          Clear Extra Spaces
         </button>
         <button onClick={(e) => setText('')} className="btn btn-primary my-2 mx-2">
           Cleart Text

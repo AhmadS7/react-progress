@@ -76,7 +76,8 @@ export default function TextForm(props) {
         <h1 className="my-4">Text Summary</h1>
         <p>
           {' '}
-          It's has {text.split(' ').length - 1} words and and a total {text.length} characters{' '}
+          {/* It's has {text.split(' ').length - 1} words and and a total {text.length} characters{' '} */}
+          It's has {text.split(' ').filter((el) => el.length !== 0).length} words and and a total {text.length} characters{' '}
         </p>
 
         <p>{0.008 * text.split(' ').length} minutes read</p>

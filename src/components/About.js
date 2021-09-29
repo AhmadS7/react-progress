@@ -96,7 +96,12 @@ export default function About() {
               Accordion Item #3
             </button>
           </h2>
-          <div id="collapseThree" className="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+          <div
+            id="collapseThree"
+            className="accordion-collapse collapse my-5"
+            aria-labelledby="headingThree"
+            data-bs-parent="#accordionExample"
+          >
             <div className="accordion-body" style={myStyle}>
               <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the
               appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing
@@ -107,11 +112,11 @@ export default function About() {
           </div>
         </div>
       </div>
-      <div className="container my-3">
+      {/* <div className="container my-3">
         <button onClick={toggleStyle} className="btn btn-primary">
           {buttonText}
         </button>
-      </div>
+      </div> */}
     </div>
   );
 }
